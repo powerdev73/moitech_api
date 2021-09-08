@@ -11,7 +11,7 @@ public class JetSensorInfoService {
 
     private final JetSensorInfoRepository jetSensorInfoRepository;
 
-    public JetSensorInfo findJetSensorInfoByNodeId(String nodeId) {
+    public JetSensorInfo findByNodeId(String nodeId) {
         return jetSensorInfoRepository.findOne(nodeId);
     }
 

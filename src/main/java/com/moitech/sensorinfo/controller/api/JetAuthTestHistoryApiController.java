@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 @Api(tags = {"1. JetAuthTestHistory"})
 @RequiredArgsConstructor
