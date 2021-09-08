@@ -1,8 +1,6 @@
 package com.moitech.sensorinfo.controller.api;
 
-import com.moitech.sensorinfo.domain.JetAuthTestHistory;
 import com.moitech.sensorinfo.domain.JetSensorInfo;
-import com.moitech.sensorinfo.response.ListResult;
 import com.moitech.sensorinfo.response.SingleResult;
 import com.moitech.sensorinfo.service.JetSensorInfoService;
 import com.moitech.sensorinfo.service.ResultService;
