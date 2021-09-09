@@ -35,7 +35,7 @@ public class JetSensorInfoTest {
 
         //then
         em.flush();
-        assertEquals(jetSensorInfo1, jetSensorInfoService.findJetSensorInfoByNodeId(nodeId1));
+        assertEquals(jetSensorInfo1, jetSensorInfoService.findByNodeId(nodeId1));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class JetSensorInfoTest {
         jetSensorInfoService.saveJetSensorInfo(jetSensorInfo1);
 
         //When
-        JetSensorInfo jetSensorInfo_current = jetSensorInfoService.findJetSensorInfoByNodeId("01");
+        JetSensorInfo jetSensorInfo_current = jetSensorInfoService.findByNodeId("01");
         System.out.println("jetSensorInfo1.getNodeId()) : "+ jetSensorInfo1.getNodeId());
 
 
