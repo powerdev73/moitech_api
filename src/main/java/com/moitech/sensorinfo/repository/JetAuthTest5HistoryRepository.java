@@ -1,5 +1,6 @@
 package com.moitech.sensorinfo.repository;
 
+import com.moitech.sensorinfo.domain.JetAuthTest2History;
 import com.moitech.sensorinfo.domain.JetAuthTest5History;
 import com.moitech.sensorinfo.domain.JetAuthTestHistory;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class JetAuthTest5HistoryRepository implements IJetAuthTest5Repository{
+public class JetAuthTest5HistoryRepository implements IJetAuthTest5HistoryRepository{
 
     private final EntityManager em;
 
@@ -24,15 +25,18 @@ public class JetAuthTest5HistoryRepository implements IJetAuthTest5Repository{
 
     @Override
     public List<JetAuthTest5History> findByUpdateNow(String nowDateTime) {
+        Date argDate = null;
         try{
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-            Date argDate = simpleDateFormat.parse(nowDateTime);
-            return em.createQuery("SELECT S FROM JetAuthTest5History S WHERE S.createDttm > :nowDateTime", JetAuthTest5History.class)
-                    .setParameter("nowDateTime", argDate)
-                    .getResultList();
-        } catch(ParseException ex){
+            argDate = simpleDateFormat.parse(nowDateTime);
+
+        } catch(ParseException ex) {
             ex.printStackTrace();
         }
+
+        return em.createQuery("SELECT S FROM JetAuthTest5History S WHERE S.createDttm > :nowDateTime", JetAuthTest5History.class)
+                .setParameter("nowDateTime", argDate)
+                .getResultList();
     }
 
     @Override

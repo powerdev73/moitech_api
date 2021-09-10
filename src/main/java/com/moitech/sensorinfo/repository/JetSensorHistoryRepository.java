@@ -26,15 +26,17 @@ public class JetSensorHistoryRepository implements IJetSensorHistoryRepository {
 
     @Override
     public List<JetSensorHistory> findByUpdateNow(String nowDateTime) {
+        Date argDate = null;
         try{
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-            Date argDate = simpleDateFormat.parse(nowDateTime);
-            return em.createQuery("SELECT S FROM JetAuthTestHistory S WHERE S.createDttm > :nowDateTime", JetSensorHistory.class)
-                    .setParameter("nowDateTime", argDate)
-                    .getResultList();
+            argDate = simpleDateFormat.parse(nowDateTime);
+
         } catch(ParseException ex){
-            return null;
+            ex.printStackTrace();
         }
+        return em.createQuery("SELECT S FROM JetAuthTestHistory S WHERE S.createDttm > :nowDateTime", JetSensorHistory.class)
+                .setParameter("nowDateTime", argDate)
+                .getResultList();
     }
 
     @Override

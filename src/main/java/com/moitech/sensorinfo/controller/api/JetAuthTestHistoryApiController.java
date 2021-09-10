@@ -24,15 +24,12 @@ public class JetAuthTestHistoryApiController {
     @ApiOperation(value = "히스토리 정보 리스트 조회", notes = "모든 히스토리 정보 리스트를 조회한다")
     @GetMapping(value = "/JetAuthTestHistory")
     public ListResult<JetAuthTestHistory> findJetAuthTestHistories(){
-        return resultService.getListResult(jetAuthTestHistoryService.findJetAuthTestHistories());
+        return resultService.getListResult(jetAuthTestHistoryService.findAll());
     }
 
     @ApiOperation(value = "히스토리 정보 리스트 조회", notes = "모든 히스토리 정보 리스트를 조회한다")
     @GetMapping(value = "/JetAuthTestHistory/{nowDate}")
     public ListResult<JetAuthTestHistory> findJetAuthTestHistoryByUpdateNow(@RequestParam String nowDate){
-        LocalDateTime updateDate = LocalDateTime.parse(nowDate,
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-
-        return resultService.getListResult(jetAuthTestHistoryService.findJetAuthTestHistoriesByUpdateNow(updateDate));
+        return resultService.getListResult(jetAuthTestHistoryService.findByUpdateNow(nowDate));
     }
 }

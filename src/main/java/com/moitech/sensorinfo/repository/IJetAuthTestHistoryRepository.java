@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IJetAuthTestHistoryRepository {
     public List<JetAuthTestHistory> findAll();
-    public List<JetAuthTestHistory> findByUpdateNow(LocalDateTime nowDateTime);
+    public List<JetAuthTestHistory> findByUpdateNow(String nowDateTime);
     public Long save(JetAuthTestHistory jetAuthTestHistory);
     public JetAuthTestHistory findOne(Long idx);
 }

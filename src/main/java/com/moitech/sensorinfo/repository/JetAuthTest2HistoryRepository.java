@@ -1,7 +1,6 @@
 package com.moitech.sensorinfo.repository;
 
 import com.moitech.sensorinfo.domain.JetAuthTest2History;
-import com.moitech.sensorinfo.domain.JetAuthTest5History;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +12,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class JetAuthTest2HistoryRepository implements IJetAuthTest2Repository{
+public class JetAuthTest2HistoryRepository implements IJetAuthTest2HistoryRepository {
 
     private final EntityManager em;
 
@@ -24,15 +23,17 @@ public class JetAuthTest2HistoryRepository implements IJetAuthTest2Repository{
 
     @Override
     public List<JetAuthTest2History> findByUpdateNow(String nowDateTime) {
+        Date argDate = null;
         try{
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-            Date argDate = simpleDateFormat.parse(nowDateTime);
-            return em.createQuery("SELECT S FROM JetAuthTest2History S WHERE S.createDttm > :nowDateTime", JetAuthTest2History.class)
-                    .setParameter("nowDateTime", argDate)
-                    .getResultList();
+            argDate = simpleDateFormat.parse(nowDateTime);
+
         } catch(ParseException ex){
             return null;
         }
+        return em.createQuery("SELECT S FROM JetAuthTest2History S WHERE S.createDttm > :nowDateTime", JetAuthTest2History.class)
+                .setParameter("nowDateTime", argDate)
+                .getResultList();
     }
 
     @Override

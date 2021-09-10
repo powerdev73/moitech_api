@@ -39,7 +39,7 @@ public class JetAuthTestHistoryTest {
                 123, 23, dateToday);
 
         //When
-        Long idx1 = jetAuthTestHistoryService.saveJetAuthtestHistory(jetAuthTestHistory1);
+        Long idx1 = jetAuthTestHistoryService.save(jetAuthTestHistory1);
 
         //Then
         assertEquals(jetAuthTestHistory1, jetAuthTestHistoryService.findByIdx(idx1));

@@ -3,7 +3,7 @@ import com.moitech.sensorinfo.domain.JetAuthTest5History;
 
 import java.util.List;
 
-public interface IJetAuthTest5Repository {
+public interface IJetAuthTest5HistoryRepository {
     public List<JetAuthTest5History> findAll();
     public List<JetAuthTest5History> findByUpdateNow(String nowDateTime);
     public JetAuthTest5History findOne(Long idx);

@@ -5,7 +5,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -19,9 +22,19 @@ public class JetAuthTestHistoryRepository implements IJetAuthTestHistoryReposito
     }
 
     @Override
-    public List<JetAuthTestHistory> findByUpdateNow(LocalDateTime nowDateTime) {
+    public List<JetAuthTestHistory> findByUpdateNow(String nowDateTime) {
+
+        Date argDate = null;
+        try{
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+            argDate = simpleDateFormat.parse(nowDateTime);
+
+        } catch(ParseException ex) {
+            ex.printStackTrace();
+        }
+
         return em.createQuery("SELECT S FROM JetAuthTestHistory S WHERE S.createDttm >= :nowDateTime", JetAuthTestHistory.class)
-                .setParameter("nowDateTime", nowDateTime)
+                .setParameter("nowDateTime", argDate)
                 .getResultList();
     }
 

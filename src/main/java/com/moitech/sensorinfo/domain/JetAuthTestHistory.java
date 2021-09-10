@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -33,6 +34,6 @@ public class JetAuthTestHistory {
     private Integer sensorPm25;
 
     @CreationTimestamp // 생성 시간 자동 입력
-    @Column(name = "CREATE_DTTM", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP", nullable=false)
-    private LocalDateTime createDttm;
+    @Column(name = "CREATE_DTTM", columnDefinition = "DATETIME default CURRENT_TIMESTAMP", nullable=false)
+    private Date createDttm;
 }

@@ -14,19 +14,19 @@ public class JetAuthTestHistoryService {
 
     private final JetAuthTestHistoryRepository jetAuthTestHistoryRepository;
 
-    public List<JetAuthTestHistory> findJetAuthTestHistories(){
+    public List<JetAuthTestHistory> findAll(){
         return jetAuthTestHistoryRepository.findAll();
     }
 
-    public Long saveJetAuthtestHistory(JetAuthTestHistory jetAuthTestHistory){
+    public Long save(JetAuthTestHistory jetAuthTestHistory){
         return jetAuthTestHistoryRepository.save(jetAuthTestHistory);
     }
 
-    public List<JetAuthTestHistory> findJetAuthTestHistoriesByUpdateNow(LocalDateTime now){
-        return jetAuthTestHistoryRepository.findByUpdateNow(LocalDateTime.now());
+    public List<JetAuthTestHistory> findByUpdateNow(String nowDate){
+        return jetAuthTestHistoryRepository.findByUpdateNow(nowDate);
     }
 
-    public JetAuthTestHistory findJetAuthTestHistoryByIdx(Long idx){
+    public JetAuthTestHistory findByIdx(Long idx){
         return jetAuthTestHistoryRepository.findOne(idx);
     }
 }
