@@ -1,5 +1,6 @@
 package com.moitech.sensorinfo.service;
 
+import com.moitech.sensorinfo.domain.JetSensorHistory;
 import com.moitech.sensorinfo.domain.JetSensorInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,8 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDateTime;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,10 +27,14 @@ public class JetSensorInfoTest {
     @Test
     public void 정보_저장_테스트() {
         //given
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd a HH:mm:ss:SSS");
+        String nowDateTime = simpleDateFormat.format(new Date());
+        Date dateToday = new Date();
+
         JetSensorInfo jetSensorInfo1
-                = createSensorHistory("1","1","127",1,
-                1,1,1.1F,1.2F,3,2,1,
-                3.8F,2.5F, LocalDateTime.now());
+                = createSensorInfo("TECHHIVE","20210825_1",nowDateTime,13,
+                12,591,19.6F,64.0F,0,0,0,
+                0.0F,0.0F, dateToday);
         //when
         String nodeId1 = jetSensorInfoService.saveJetSensorInfo(jetSensorInfo1);
 
@@ -41,22 +46,24 @@ public class JetSensorInfoTest {
     @Test
     public void 현재_정보_가져오기_테스트(){
         //Given
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd a HH:mm:ss:SSS");
+        String nowDateTime = simpleDateFormat.format(new Date());
+        Date dateToday = new Date();
+
         JetSensorInfo jetSensorInfo1
-                = createSensorHistory("123","01","127",1,
-                1,1,1.1F,1.2F,3,2,1,
-                3.8F,2.5F, LocalDateTime.now());
+                = createSensorInfo("TECHHIVE","20210825_1",nowDateTime,13,
+                12,591,19.6F,64.0F,0,0,0,
+                0.0F,0.0F, dateToday);
 
         jetSensorInfoService.saveJetSensorInfo(jetSensorInfo1);
 
         //When
         JetSensorInfo jetSensorInfo_current = jetSensorInfoService.findByNodeId("01");
         System.out.println("jetSensorInfo1.getNodeId()) : "+ jetSensorInfo1.getNodeId());
-
-
     }
 
     // 테스트용 데이터 입력
-    private JetSensorInfo createSensorHistory(
+    private JetSensorInfo createSensorInfo(
             String facilityId,
             String nodeId,
             String presentationTime,
@@ -70,7 +77,7 @@ public class JetSensorInfoTest {
             int sensorNo2,
             float sensor03,
             float sensorDiffPressure,
-            LocalDateTime createDttm)
+            Date createDttm)
     {
         JetSensorInfo jetSensorInfo = new JetSensorInfo();
         jetSensorInfo.setFacilityId(facilityId);
