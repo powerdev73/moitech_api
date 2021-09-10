@@ -1,7 +1,6 @@
 package com.moitech.sensorinfo.service;
 
 import com.moitech.sensorinfo.domain.JetAuthTest2History;
-import com.moitech.sensorinfo.domain.JetAuthTestHistory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

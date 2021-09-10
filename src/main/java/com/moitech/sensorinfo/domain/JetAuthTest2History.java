@@ -33,7 +33,7 @@ public class JetAuthTest2History {
     @Column(name = "TSI2_PM25", columnDefinition="INT(11) default 0", nullable=false)
     private Integer tsi2Pm25;
 
-    @CreationTimestamp // 생성 시간 자동 입력
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATE_DTTM", columnDefinition = "DATETIME default CURRENT_TIMESTAMP", nullable=false)
     private Date createDttm;
 }

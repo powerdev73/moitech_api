@@ -17,21 +17,21 @@ public class JetAuthTest5History {
     @Column(name = "IDX")
     private Long idx;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "START_DTTM", columnDefinition = "DATETIME default null", nullable=true)
     private Date startDttm;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "END_DTTM", columnDefinition = "DATETIME default null", nullable=true)
     private Date endDttm;
 
     @Column(name = "DELIVERY_TIME", columnDefinition="INT(11) default 10", nullable=true)
     private Integer deliveryTime;
 
-    @Column(name = "CMD_YN", columnDefinition="CHAR(1) default Y", nullable=true)
+    @Column(name = "CMD_YN", length=1,  columnDefinition="CHAR(1) default 'Y'", nullable=true)
     private String cmdYn;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATE_DTTM", columnDefinition = "DATETIME default CURRENT_TIMESTAMP", nullable=true)
     private Date createDttm;
-
-    @Column(name = "UPDATE_DTTM", columnDefinition = "DATETIME default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP", nullable=true)
-    private Date updateDttm;
 }

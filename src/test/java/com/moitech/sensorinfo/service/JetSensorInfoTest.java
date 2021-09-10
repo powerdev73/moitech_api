@@ -1,6 +1,5 @@
 package com.moitech.sensorinfo.service;
 
-import com.moitech.sensorinfo.domain.JetSensorHistory;
 import com.moitech.sensorinfo.domain.JetSensorInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;

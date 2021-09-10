@@ -57,7 +57,7 @@ public class JetSensorHistory {
     @Column(name = "SENSOR_DIFF_PRESSURE", columnDefinition="FLOAT(10,1) default 0.0", nullable=false)
     private Float sensorDiffPressure;
 
-    @CreationTimestamp // 생성 시간 자동 입력
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATE_DTTM", columnDefinition = "DATETIME default CURRENT_TIMESTAMP", nullable=false)
     private Date createDttm;
 }
