@@ -116,7 +116,7 @@ public class JetSensorHistoryTest {
                 System.out.println("m.getNodeId() = " + m.getNodeId());
             }
         } catch (Exception ex) {
-
+            ex.printStackTrace();
         }
     }
 

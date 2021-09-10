@@ -115,8 +115,7 @@ public class JetAuthTestHistoryTest {
             }
         }
         catch (IllegalStateException e) {
-            return;
-        }
+            e.printStackTrace();        }
     }
 
     public JetAuthTestHistory createJetAuthTestHistory(
