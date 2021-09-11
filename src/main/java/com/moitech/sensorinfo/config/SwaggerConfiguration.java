@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfiguration {
     private static final String API_NAME = "MOI TECH WEB API";
     private static final String API_VERSION = "0.0.1";
-    private static final String API_DESCRIPTION = "모이테크 API 명세서";
+    private static final String API_DESCRIPTION = "모이기술 테스트 API 명세서";
 
     @Bean
     public Docket swaggerApi() {

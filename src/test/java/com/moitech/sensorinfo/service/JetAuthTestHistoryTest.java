@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -83,13 +84,14 @@ public class JetAuthTestHistoryTest {
     }
 
     @Test
+    @Rollback(value = false)
     public void 지정시간이후_리스트_테스트() {
         //Given
         Date dateToday = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateToday);
 
-        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyyMMddhhmmss.SSS");
 
         cal.add(Calendar.MINUTE, 3);
         System.out.println(cal.getTime());
@@ -122,16 +124,16 @@ public class JetAuthTestHistoryTest {
             String facilityId,
             String nodeId,
             String presentationTime,
-            Integer sensorPm10,
-            Integer sensorPm25,
+            Integer tsiPm25,
+            Integer moiPm25,
             Date createDttm)
     {
         JetAuthTestHistory jetAuthTestHistory = new JetAuthTestHistory();
         jetAuthTestHistory.setFacilityId(facilityId);
         jetAuthTestHistory.setNodeId(nodeId);
         jetAuthTestHistory.setPresentationTime(presentationTime);
-        jetAuthTestHistory.setSensorPm10(sensorPm10);
-        jetAuthTestHistory.setSensorPm25(sensorPm25);
+        jetAuthTestHistory.setTsiPm25(tsiPm25);
+        jetAuthTestHistory.setMoiPm25(moiPm25);
         jetAuthTestHistory.setCreateDttm(createDttm);
         return jetAuthTestHistory;
     }

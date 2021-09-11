@@ -9,7 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = {". JetSensorInfo"})
+@Api(tags = {"2. JetSensorInfo"})
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/api")

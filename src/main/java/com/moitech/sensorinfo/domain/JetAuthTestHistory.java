@@ -27,11 +27,11 @@ public class JetAuthTestHistory {
     @Column(name = "PRESENTATION_TIME", length=50, nullable=false)
     private String presentationTime;
 
-    @Column(name = "SENSOR_PM10", columnDefinition="INT(11) default 0", nullable=false)
-    private Integer sensorPm10;
+    @Column(name = "TSI_PM25", columnDefinition="INT(11) default 0", nullable=false)
+    private Integer tsiPm25;
 
-    @Column(name = "SENSOR_PM25", columnDefinition="INT(11) default 0", nullable=false)
-    private Integer sensorPm25;
+    @Column(name = "MOI_PM25", columnDefinition="INT(11) default 0", nullable=false)
+    private Integer moiPm25;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATE_DTTM", columnDefinition = "DATETIME default CURRENT_TIMESTAMP", nullable=false)

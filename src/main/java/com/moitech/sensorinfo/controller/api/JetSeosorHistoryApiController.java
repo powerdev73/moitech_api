@@ -28,7 +28,7 @@ public class JetSeosorHistoryApiController {
         return resultService.getListResult(jetSensorHistoryService.findAll());
     }
 
-    @ApiOperation(value = "히스토리 정보 리스트 조회", notes = "모든 히스토리 정보 리스트를 조회한다")
+    @ApiOperation(value = "현재 시간 이후 히스토리 정보 리스트 조회", notes = "현재 시간 이후 히스토리 정보 리스트를 조회한다")
     @GetMapping(value = "/JetSensorHistory/{nowDate}")
     public ListResult<JetSensorHistory> findJetAuthTestHistoryByUpdateNow(@RequestParam String nowDate){
         return resultService.getListResult(jetSensorHistoryService.findByUpdateNow(nowDate));
